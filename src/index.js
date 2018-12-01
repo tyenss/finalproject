@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 //import Welcome from './App';
 import * as serviceWorker from './serviceWorker';
-import Welcome from "./login";
+import Welcome from "./react components/login";
 
 document.addEventListener("DOMContentLoaded", function(event) {
     ReactDOM.render(<Welcome/>,document.getElementById("root"));
