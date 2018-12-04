@@ -34,13 +34,13 @@ class MainPage extends React.Component
     render() {
         return (
             <div>
-                <button ref={"reject"} onClick={this.handleClick}>Bad Plane</button>
+                <button ref={"reject"} onClick={this.handleClick(true)}>Bad Plane</button>
                 <p ref={"airline"}>{this.props.airline}</p>
                 <p ref={"airplane"}>{this.props.airplane}</p>
                 <p ref={"destination"}>{this.props.destination}</p>
                 <p ref={"cost"}>{this.props.cost}</p>
                 {/*<div id="map"></div>*/}
-                <button ref={"accept"} onClick={this.handleClick}>Good Plane</button>
+                <button ref={"accept"} onClick={this.handleClick(false)}>Good Plane</button>
             </div>
         )
     }
