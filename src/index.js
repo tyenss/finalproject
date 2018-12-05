@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 //import Welcome from './App';
 import * as serviceWorker from './serviceWorker';
-import Welcome from "./react components/login";
+import Welcome from "./react components/login.jsx";
+import {BackgroundVideo} from "./react components/backgroundVideo";
 
 document.addEventListener("DOMContentLoaded", function(event) {
     ReactDOM.render(<Welcome/>,document.getElementById("root"));
+    //ReactDOM.render(<BackgroundVideo/>,document.getElementById("root"));
 });
 
 // If you want your app to work offline and load faster, you can change

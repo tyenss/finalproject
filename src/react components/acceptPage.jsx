@@ -30,4 +30,4 @@ class AcceptPage extends React.Component
         )}
 }
 
-export default Welcome;
+export default AcceptPage;

@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import ReactDOM from "react-dom";
+import AcceptPage from "./acceptPage";
+import MapContainer from "./googleMap";
+import {BackgroundVideo} from "./backgroundVideo";
 
 /*
 creates react login component
@@ -8,10 +12,10 @@ class Welcome extends React.Component
     constructor(props) {
         super(props);
         this.state =
-            {
-                value: '',
-                password:''
-            };
+        {
+            value: '',
+            password:''
+        };
 
         //this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,6 +47,7 @@ class Welcome extends React.Component
         //     className += ' menu-active';
         // }
         return (
+
             <div>
                 <form className={className} onSubmit={this.handleSubmit}>
                     <label>
@@ -59,6 +64,7 @@ class Welcome extends React.Component
                     </label>
                     <input type="submit" value="Submit" className={buttonName}/>
                 </form>
+
             </div>
     )}
 }
