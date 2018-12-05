@@ -17,15 +17,16 @@ class Welcome extends React.Component
         };
 
         //this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        //this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(event)
+    handleSubmit()
     {
         //some function (this.state.value,this.state.password);
-        alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
-        //login(this.state.value,this.state.password);
+        // alert('A name was submitted: ' + this.state.value);
+        // event.preventDefault();
+
+        login(this.state.value,this.state.password);
     }
 
     render()
@@ -52,7 +53,7 @@ class Welcome extends React.Component
                                className={inputTextClass}
                                placeholder="password"/>
                     </label>
-                    <input type="submit" value="Submit" className={buttonName}/>
+                    <input type="submit" value="Submit" className={buttonName} onClick={this.handleSubmit}/>
                 </form>
 
             </div>
