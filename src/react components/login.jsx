@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import AcceptPage from "./acceptPage";
 import MapContainer from "./googleMap";
-import {BackgroundVideo} from "./backgroundVideo";
 
 /*
 creates react login component
@@ -20,16 +19,6 @@ class Welcome extends React.Component
         //this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
-    // handleChange(event)
-    // {
-    //     //this.setState({username:event.target.value});
-    //     //this.setState({[event.target.id]: event.target.value});
-    //     //const password = event.target.value;
-    //     this.setState({ value: event.target.value});
-    //     // const { name, value } = event.target;
-    //     // this.setState({ [name]: value });
-    // };
 
     handleSubmit(event)
     {

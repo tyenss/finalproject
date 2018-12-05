@@ -29,7 +29,7 @@ class MainPage extends React.Component
     {
         if (accept===true)
         {
-            ReactDOM.render(<AcceptPage/>,document.getElementById("root"));
+            //ReactDOM.render(<AcceptPage/>,document.getElementById("root"));
             //goes to acceptPage.jsx
         } else
         {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker, PolyLine } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker,Polyline } from 'google-maps-react';
 
 const mapStyles = {
     width: '100%',
@@ -10,7 +10,14 @@ const mapStyles = {
     Creates Google Map with 2 markers, one where the person is currently at and one where the destination is at
     Then, a simple route is created between the two locations
  */
+
+
 /*
+    Info required
+        Latitude Longitude of here
+        Latitude Longitude of destination
+        Destination Name (this.state.destinationTitle)
+ */
 export class MapContainer extends Component
 {
     constructor(props)
@@ -59,7 +66,7 @@ export class MapContainer extends Component
                         strokeWeight: 2,
                         icons: [
                             {
-                                icon: lineSymbol,
+                                // icon: lineSymbol,
                                 offset: "0",
                                 repeat: "20px"
                             }
@@ -72,4 +79,4 @@ export class MapContainer extends Component
 }
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg'})(MapContainer);*/
+    apiKey: 'AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg'})(MapContainer);
