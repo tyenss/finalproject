@@ -40,7 +40,7 @@ class Welcome extends React.Component
         return (
 
             <div>
-                <form className={className} onSubmit={this.handleSubmit}>
+                <form className={className} onSubmit={this.handleSubmit.bind(this)}>
                     <label>
                         {/*Username:*/}
                         <input type="text" name="username" value={this.state.value}
@@ -53,7 +53,7 @@ class Welcome extends React.Component
                                className={inputTextClass}
                                placeholder="password"/>
                     </label>
-                    <input type="submit" value="Submit" className={buttonName} onClick={this.handleSubmit}/>
+                    <input type="submit" value="Submit" className={buttonName} />
                 </form>
 
             </div>

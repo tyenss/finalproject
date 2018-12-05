@@ -1,6 +1,7 @@
 import React from 'react';//needed
 import ReactDOM from 'react-dom';// needed
 import $ from 'jquery';
+import MainPage from "../react components/mainPage.jsx";
 window.$ = $;
 let root_url = "http://comp426.cs.unc.edu:3001/";
 
@@ -31,7 +32,7 @@ export function login(user,pass)
 		       build_airlines_interface();
 			   build_planes_interface();
 			   build_airports_interface();
-			   ReactDOM.render(<mainPage airplane={"asdf"} airline={"asdf"}/>,document.getElementById("root"));
+			   ReactDOM.render(<MainPage airplane={"asdf"} airline={"asdf"}/>,document.getElementById("root"));
 			   //get_airport(Lihue Airport);
 		   },
 		   error: (jqxhr, status, error) => {
