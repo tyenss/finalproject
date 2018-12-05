@@ -1,5 +1,7 @@
 import React from 'react';//needed
 import ReactDOM from 'react-dom';// needed
+import $ from 'jquery';
+window.$ = $;
 let root_url = "http://comp426.cs.unc.edu:3001/";
 
 
@@ -29,7 +31,7 @@ function login(user,pass)
 		       build_airlines_interface();
 			   build_planes_interface();
 			   build_airports_interface();
-			   ReactDOM.render(<MainPage airplane={"asdf"} airline={"asdf"}/>,document.getElementById("root"));
+			   ReactDOM.render(<mainPage airplane={"asdf"} airline={"asdf"}/>,document.getElementById("root"));
 			   //get_airport(Lihue Airport);
 		   },
 		   error: (jqxhr, status, error) => {
@@ -177,13 +179,9 @@ var build_airports_interface = function() {
 };
 /*def get_airport = function(airport_1){
 	let body = $('body');
-
     body.append("<h3>Airport found:</h3>");
-
     let airport_list = $("<ul id='airports_list'></ul>");
     body.append(airport_list);
-
-
     $.ajax(root_url + "airports",
 	   {
 	       type: 'GET',
