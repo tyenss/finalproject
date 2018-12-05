@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import AcceptPage from "./acceptPage";
 import MapContainer from "./googleMap";
-
+import {login} from "../javascript files/final_project";
 /*
 creates react login component
  */

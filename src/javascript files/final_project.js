@@ -5,7 +5,7 @@ window.$ = $;
 let root_url = "http://comp426.cs.unc.edu:3001/";
 
 
-function login(user,pass)
+export function login(user,pass)
 {
     $('#login_btn').on('click', () => {
 
