@@ -1,8 +1,12 @@
-var root_url = "http://comp426.cs.unc.edu:3001/";
+import React from 'react';//needed
+import ReactDOM from 'react-dom';// needed
+let root_url = "http://comp426.cs.unc.edu:3001/";
 
-$(document).ready(() => {
+
+function login(user,pass)
+{
     $('#login_btn').on('click', () => {
-	
+
 	let user = $('#user').val();
 	let pass = $('#pass').val();
 
@@ -19,10 +23,13 @@ $(document).ready(() => {
 			   password: pass
 		       }
 		   },
-		   success: () => {
+		   success: () =>
+		   {
+
 		       build_airlines_interface();
 			   build_planes_interface();
 			   build_airports_interface();
+			   ReactDOM.render(<MainPage airplane={"asdf"} airline={"asdf"}/>,document.getElementById("root"));
 			   //get_airport(Lihue Airport);
 		   },
 		   error: (jqxhr, status, error) => {
@@ -30,7 +37,7 @@ $(document).ready(() => {
 		   }
 	       });
     });
-});
+}
 
 var build_airlines_interface = function() {
     let body = $('body');
@@ -47,7 +54,7 @@ var build_airlines_interface = function() {
 
     body.append(airline_add_div);
 
-    
+
     $.ajax(root_url + "airlines",
 	   {
 	       type: 'GET',
@@ -81,7 +88,7 @@ var build_airlines_interface = function() {
 
 var build_planes_interface = function() {
     let body = $('body');
-	
+
     body.append("<h2>Planes</h2>");
 
     let plane_list = $("<ul id='planes_list'></ul>");
@@ -92,7 +99,7 @@ var build_planes_interface = function() {
 
     body.append(plane_add_div);
 
-    
+
     $.ajax(root_url + "planes",
 	   {
 	       type: 'GET',
@@ -126,7 +133,7 @@ var build_planes_interface = function() {
 
 var build_airports_interface = function() {
     let body = $('body');
-	
+
     body.append("<h2>Airports</h2>");
 
     let airport_list = $("<ul id='airports_list'></ul>");
@@ -137,7 +144,7 @@ var build_airports_interface = function() {
 
     body.append(airport_add_div);
 
-    
+
     $.ajax(root_url + "airports",
 	   {
 	       type: 'GET',
@@ -170,13 +177,13 @@ var build_airports_interface = function() {
 };
 /*def get_airport = function(airport_1){
 	let body = $('body');
-	
+
     body.append("<h3>Airport found:</h3>");
 
     let airport_list = $("<ul id='airports_list'></ul>");
     body.append(airport_list);
 
-    
+
     $.ajax(root_url + "airports",
 	   {
 	       type: 'GET',

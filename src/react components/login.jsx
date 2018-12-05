@@ -36,6 +36,7 @@ class Welcome extends React.Component
         //some function (this.state.value,this.state.password);
         alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
+        //login(this.state.value,this.state.password);
     }
 
     render()
