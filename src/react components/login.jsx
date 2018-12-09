@@ -48,6 +48,7 @@ class Welcome extends React.Component
         return (
 
             <div>
+                <h1>Linder Tinder</h1>
                 <form className={className} onSubmit={this.handleSubmit.bind(this)}>
                     <label>
                         {/*Username:*/}

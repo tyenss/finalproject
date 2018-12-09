@@ -17,11 +17,6 @@ class MainPage extends React.Component
             destination:"destination",
             cost:"cost",
             logo:"logo",
-            title:"Current location",
-            destinationLat:1,
-            destinationLng:1,
-            lat:0,
-            lng:0
             // onMarkerClick:"Place",
             // destinationTitle:"Location"
         };

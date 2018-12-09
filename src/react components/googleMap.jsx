@@ -94,6 +94,15 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class SimpleMap extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.state=
+        {
+            lat:0,
+            lng:0
+        }
+    }
     static defaultProps = {
         center: {
             lat: 59.95,
@@ -102,23 +111,43 @@ class SimpleMap extends React.Component
         zoom: 11
     };
 
-    render() {
-        return (
-            // Important! Always set the container height explicitly
-            <div style={{ height: '100vh', width: '100%' }}>
-                <GoogleMapReact
-                    bootstrapURLKeys={{ key: "AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg" }}
-                    defaultCenter={this.props.center}
-                    defaultZoom={this.props.zoom}
-                >
-                    <AnyReactComponent
-                        lat={59.955413}
-                        lng={30.337844}
-                        text={'Kreyser Avrora'}
-                    />
-                </GoogleMapReact>
-            </div>
-        );
+    render()
+    {
+        // let lat=0;
+        // let lng=0;
+        if (navigator.geolocation) {
+
+// Get the user's current position
+            navigator.geolocation.getCurrentPosition(function(position) {
+                let lat=position.coords.latitude;
+                let lng=position.coords.longitude;
+                return (
+                    // Important! Always set the container height explicitly
+                    <div style={{ height: '100vh', width: '100%' }}>
+                        <GoogleMapReact
+                            bootstrapURLKeys={{ key: "AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg" }}
+                            defaultCenter={this.props.center}
+                            defaultZoom={this.props.zoom}
+                        >
+                            <AnyReactComponent
+                                lat={lat}
+                                lng={lng}
+                                text={'Current Location'}
+                            />
+                            <AnyReactComponent
+                                lat={this.props.destinationLat}
+                                lng={this.props.destinationLng}
+                                text={'Destination'}
+                            />
+                        </GoogleMapReact>
+                    </div>
+                );
+            });
+        } else {
+            alert('Geolocation is not supported in your browser');
+            return <div></div>
+        }
+
     }
 }
 
