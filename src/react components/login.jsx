@@ -63,7 +63,7 @@ class Welcome extends React.Component
                                id={"passText"}
                                placeholder="password"/>
                     </label>
-                    <input type="submit" value="Submit" className={buttonName} />
+                    <input type="button" value="Submit" className={buttonName} onClick={this.handleSubmit.bind(this)}/>
                 </form>
                 {/*ReactDOM.render(<MapContainer lat={5} lng={5} destinationLat={6} destinationLng={6}/>);*/}
             </div>

@@ -9,9 +9,9 @@ import MainPage from "./react components/mainPage.jsx";
 
 document.addEventListener("DOMContentLoaded", function(event)
 {
-    //ReactDOM.render(<MainPage airline={"airline"} airplane={"swer"} cost={"100"}
-      //                        destination={"Place"} logo={"We Like to fly"}/>,document.getElementById("root"));
-    ReactDOM.render(<Welcome/>,document.getElementById("root"));
+    ReactDOM.render(<MainPage airline={"airline"} airplane={"swer"} cost={"100"}
+                             destination={"Place"} logo={"We Like to fly"}/>,document.getElementById("root"));
+    // ReactDOM.render(<Welcome/>,document.getElementById("root"));
     //ReactDOM.render(<BackgroundVideo/>,document.getElementById("root"));
 });
 
