@@ -13,62 +13,64 @@
     /*!*monospace;*!*/
 /*!*}*/
 
-body {
+body
+{
     width: 100%;
     height: 90vh;
-    color: #fff;
-    background: linear-gradient(-45deg, #0031ff, #556ee7, #23A6D5, #42d5d5);
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 15s ease infinite;
-    -moz-animation: Gradient 15s ease infinite;
-    animation: Gradient 15s ease infinite;
+    background-image: url("./pictures/747Plane.jpg"), linear-gradient(to right, purple 0%, yellow 90%);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-color:palevioletred;
+    background-blend-mode: color-burn, screen;
+    /*color: #fff;*/
+    /*background: linear-gradient(-45deg, #0031ff, #556ee7, #23A6D5, #42d5d5);*/
+    /*background-size: 400% 400%;*/
+    /*-webkit-animation: Gradient 15s ease infinite;*/
+    /*-moz-animation: Gradient 15s ease infinite;*/
+    /*animation: Gradient 15s ease infinite;*/
 }
 
-@-webkit-keyframes Gradient {
-    0% {
-        background-position: 0% 50%
-    }
-    50% {
-        background-position: 100% 50%
-    }
-    100% {
-        background-position: 0% 50%
-    }
-}
+/*@-webkit-keyframes Gradient {*/
+    /*0% {*/
+        /*background-position: 0% 50%*/
+    /*}*/
+    /*50% {*/
+        /*background-position: 100% 50%*/
+    /*}*/
+    /*100% {*/
+        /*background-position: 0% 50%*/
+    /*}*/
+/*}*/
 
-@-moz-keyframes Gradient {
-    0% {
-        background-position: 0% 50%
-    }
-    50% {
-        background-position: 100% 50%
-    }
-    100% {
-        background-position: 0% 50%
-    }
-}
+/*@-moz-keyframes Gradient {*/
+    /*0% {*/
+        /*background-position: 0% 50%*/
+    /*}*/
+    /*50% {*/
+        /*background-position: 100% 50%*/
+    /*}*/
+    /*100% {*/
+        /*background-position: 0% 50%*/
+    /*}*/
+/*}*/
 
-@keyframes Gradient {
-    0% {
-        background-position: 0% 50%
-    }
-    50% {
-        background-position: 100% 50%
-    }
-    100% {
-        background-position: 0% 50%
-    }
-}
+/*@keyframes Gradient {*/
+    /*0% {*/
+        /*background-position: 0% 50%*/
+    /*}*/
+    /*50% {*/
+        /*background-position: 100% 50%*/
+    /*}*/
+    /*100% {*/
+        /*background-position: 0% 50%*/
+    /*}*/
+/*}*/
 
 h1,
 h6 {
     font-family: 'Open Sans';
-    font-weight: 300;
-    text-align: center;
+    font-weight: 100;
     position: absolute;
-    top: 45%;
-    right: 0;
-    left: 0;
 }
 
 .menu
@@ -212,5 +214,9 @@ Map
 
 #acceptPage
 {
-
+    width:40%;
+    height:100%;
+    background: rgba(31, 47, 50, 0.75);
+    border-left:#4B9CD3 solid 2px;
+    border-right:#4B9CD3 solid 2px;
 }

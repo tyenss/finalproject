@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Emoji from 'react-emoji-render';
 
 /*
 creates react login component
