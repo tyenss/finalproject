@@ -39,15 +39,17 @@ class MainPage extends React.Component
 
     render() {
         return (
-            <div className="MainTinderPage">
-                <button ref={"reject"} onClick={this.handleClick(true)}>Bad Plane</button>
-                <p ref={"airline"}>{this.props.airline}</p>
-                <p ref={"airplane"}>{this.props.airplane}</p>
-                <p ref={"destination"}>{this.props.destination}</p>
-                <p ref={"cost"}>{this.props.cost}</p>
-                <p ref={"logo"}>{this.props.logo}</p>
+            <div className="mainTinderPage">
+                <button ref={"reject"} onClick={this.handleClick(true)} className={"button"}>Bad Plane</button>
+                <div className={"attributes"}>
+                    <p ref={"airline"}>{this.props.airline}</p>
+                    <p ref={"airplane"}>{this.props.airplane}</p>
+                    <p ref={"destination"}>{this.props.destination}</p>
+                    <p ref={"cost"}>{this.props.cost}</p>
+                    <p ref={"logo"}>{this.props.logo}</p>
+                </div>
                 {/*<div id="map"></div>*/}
-                <button ref={"accept"} onClick={this.handleClick(false)}>Good Plane</button>
+                <button ref={"accept"} onClick={this.handleClick(false)} className={"button"}>Good Plane</button>
                 {/*ReactDOM.render(<MapContainer/>,document.getElementById("root"));*/}
             </div>
         )

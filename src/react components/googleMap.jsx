@@ -23,17 +23,17 @@ export class MapContainer extends Component
     constructor(props)
     {
         super(props);
-        // this.state=
-        // {
-        //
-        // }
+        this.props=
+        {
+            title:"Current location"
+        };
     }
 
     render()
     {
         const pathCoordinates = [
-            { lat: this.state.lat, lng: this.state.lng },
-            { lat: this.state.destinationLat, lng:this.state.destinationLng }
+            { lat: this.props.lat, lng: this.state.lng },
+            { lat: this.props.destinationLat, lng:this.props.destinationLng }
         ];
         return (
             <div>
@@ -42,20 +42,20 @@ export class MapContainer extends Component
                 zoom={5}
                 style={mapStyles}
                 initialCenter={{
-                lat: this.state.lat,
-                lng: this.state.lng}}
+                lat: this.props.lat,
+                lng: this.props.lng}}
                 />
                 <Marker
-                    onClick = { this.onMarkerClick }
-                    title = { this.state.title }
-                    position = {{ lat: this.state.lat, lng: this.state.lng }}
-                    name = { this.state.title }
+                    onClick = { this.props.onMarkerClick }
+                    title = { this.props.title }
+                    position = {{ lat: this.props.lat, lng: this.props.lng }}
+                    name = { this.props.title }
                 />
                 <Marker
-                    onClick = { this.onMarkerClick }
-                    title = { this.state.destinationTitle }
-                    position = {{ lat: this.state.destinationLat, lng: this.state.destinationLng }}
-                    name = { this.state.destinationTitle }
+                    onClick = { this.props.onMarkerClick }
+                    title = { this.props.destinationTitle }
+                    position = {{ lat: this.props.destinationLat, lng: this.props.destinationLng }}
+                    name = { this.props.destinationTitle }
                 />
                 <Polyline
                     path={pathCoordinates}

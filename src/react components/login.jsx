@@ -55,7 +55,7 @@ class Welcome extends React.Component
                     </label>
                     <input type="submit" value="Submit" className={buttonName} />
                 </form>
-
+                {/*ReactDOM.render(<MapContainer lat={5} lng={5} destinationLat={6} destinationLng={6}/>);*/}
             </div>
     )}
 }
