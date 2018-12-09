@@ -6,15 +6,10 @@ window.$ = $;
 let root_url = "http://comp426.cs.unc.edu:3001/";
 
 
-export function login(user,pass)
-{
-    $('#login_btn').on('click', () => {
+function login(user,pass){
 
-	let user = $('#user').val();
-	let pass = $('#pass').val();
-
-	console.log(user);
-	console.log(pass);
+	//console.log(user);
+	//console.log(pass);
 
 	$.ajax(root_url + "sessions",
 	       {
@@ -28,17 +23,14 @@ export function login(user,pass)
 		   },
 		   success: () =>
 		   {
-
 		       build_airlines_interface();
-			   build_planes_interface();
-			   build_airports_interface();
 			   ReactDOM.render(<MainPage airplane={"asdf"} airline={"asdf"}/>,document.getElementById("root"));
 			   //get_airport(Lihue Airport);
 		   },
 		   error: (jqxhr, status, error) => {
 		       alert(error);
 		   }
-	       });
+	       
     });
 }
 
@@ -87,113 +79,5 @@ var build_airlines_interface = function() {
 	       });
     });
 
-};
-
-var build_planes_interface = function() {
-    let body = $('body');
-
-    body.append("<h2>Planes</h2>");
-
-    let plane_list = $("<ul id='planes_list'></ul>");
-    body.append(plane_list);
-
-    let plane_add_div = $("<div>Name: <input id='new_plane_name' type='text'><br>" +
-			    "<button id='make_plane'>Create</button></div>");
-
-    body.append(plane_add_div);
-
-
-    $.ajax(root_url + "planes",
-	   {
-	       type: 'GET',
-	       xhrFields: {withCredentials: true},
-	       success: (planes) => {
-		   for (let i=0; i<planes.length; i++) {
-		       plane_list.append("<li>" + planes[i].name + "</li>");
-		   }
-	       }
-	   });
-
-    $('#make_plane').on('click', () => {
-	let plane_name = $('#new_plane_name').val();
-
-	$.ajax(root_url + "planes",
-	       {
-		   type: 'POST',
-		   data: {
-		       plane: {
-			   name: plane_name
-		       }
-		   },
-		   xhrFields: {withCredentials: true},
-		   success: (plane) => {
-		       plane_list.append("<li>" + plane.name + "</li>");
-		   }
-	       });
-    });
-
-};
-
-var build_airports_interface = function() {
-    let body = $('body');
-
-    body.append("<h2>Airports</h2>");
-
-    let airport_list = $("<ul id='airports_list'></ul>");
-    body.append(airport_list);
-
-    let airport_add_div = $("<div>Name: <input id='new_airport_name' type='text'><br>" +
-			    "<button id='make_airport'>Create</button></div>");
-
-    body.append(airport_add_div);
-
-
-    $.ajax(root_url + "airports",
-	   {
-	       type: 'GET',
-	       xhrFields: {withCredentials: true},
-	       success: (airports) => {
-		   for (let i=0; i<airports.length; i++) {
-		       airport_list.append("<li>" + airports[i].name + "</li>");
-		   }
-	       }
-	   });
-
-    $('#make_airport').on('click', () => {
-	let airport_name = $('#new_airport_name').val();
-
-	$.ajax(root_url + "airports",
-	       {
-		   type: 'POST',
-		   data: {
-		       plane: {
-			   name: airport_name
-		       }
-		   },
-		   xhrFields: {withCredentials: true},
-		   success: (airport) => {
-		       airport_list.append("<li>" + airport.name + "</li>");
-		   }
-	       });
-    });
-
-};
-/*def get_airport = function(airport_1){
-	let body = $('body');
-    body.append("<h3>Airport found:</h3>");
-    let airport_list = $("<ul id='airports_list'></ul>");
-    body.append(airport_list);
-    $.ajax(root_url + "airports",
-	   {
-	       type: 'GET',
-	       xhrFields: {withCredentials: true},
-	       success: (airports) => {
-		   for (let i=0; i<airports.length; i++) {
-			   if airports[i].name==airport1{
-				   airport_list.append("<li>" + airports[i].name + "</li>");
-			   }
-		   }
-	       }
-	   });
-};*/
-
+}
+export {login};
