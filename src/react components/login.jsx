@@ -16,7 +16,8 @@ class Welcome extends React.Component
             password:''
         };
 
-        //this.handleChange = this.handleChange.bind(this);
+        this.handleChangePass = this.handleChangePass.bind(this);
+        this.handleChangeUser=this.handleChangeUser.bind(this);
         //this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -25,8 +26,15 @@ class Welcome extends React.Component
         //some function (this.state.value,this.state.password);
         // alert('A name was submitted: ' + this.state.value);
         // event.preventDefault();
+        alert(document.getElementById("userText").value+document.getElementById("passText").value);
+        login(document.getElementById("userText").value,document.getElementById("passText").value);
+    }
+    handleChangeUser(event) {
+        this.setState({value: event.target.value});
+    }
 
-        login(this.state.value,this.state.password);
+    handleChangePass(event) {
+        this.setState({password: event.target.value});
     }
 
     render()
@@ -44,13 +52,15 @@ class Welcome extends React.Component
                     <label>
                         {/*Username:*/}
                         <input type="text" name="username" value={this.state.value}
-                               onChange={(event,newValue) => this.setState({value:newValue})}
+                               onChange={this.handleChangeUser}
                                className={inputTextClass}
+                               id={"userText"}
                                 placeholder="username"/>
                         {/*Password:*/}
                         <input type="password" name="password" value={this.state.password}
-                               onChange={(event,newValue) => this.setState({password:newValue})}
+                               onChange={this.handleChangePass}
                                className={inputTextClass}
+                               id={"passText"}
                                placeholder="password"/>
                     </label>
                     <input type="submit" value="Submit" className={buttonName} />
