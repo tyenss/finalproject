@@ -177,15 +177,7 @@ input
     border: 1px lightgray solid;
     text-align:center;
     width:fit-content;
-    /*overflow:hidden;*/
-    /*margin-left: 50%;*/
-    /*margin-right:50%;*/
-    /*position:relative;*/
-    /*top:50%;*/
-    /*position:absolute;*/
     height:50%;
-    /*width:auto;*/
-    /*width: 50%;*/
 }
 
 .attributes
@@ -203,4 +195,17 @@ input
     border: 1px solid black;
 
     /*width:20%*/
+}
+
+#entirePage
+{
+    display:block;
+    height: 100%;
+
+}
+
+Map
+{
+    width: 100px;
+    height:100px;
 }

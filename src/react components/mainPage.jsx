@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import AcceptPage from "./acceptPage.jsx";
-import {MapContainer} from "./googleMap";
+import SimpleMap from "./googleMap.jsx";
 
 /*
 creates react components to display a tinder match and allows you to accept or decline them
@@ -18,10 +18,10 @@ class MainPage extends React.Component
             cost:"cost",
             logo:"logo",
             title:"Current location",
-            destinationLat:"1",
-            destinationLng:"1",
-            lat:"0",
-            lng:"0"
+            destinationLat:1,
+            destinationLng:1,
+            lat:0,
+            lng:0
             // onMarkerClick:"Place",
             // destinationTitle:"Location"
         };
@@ -58,9 +58,9 @@ class MainPage extends React.Component
                      </div>
                      {/*<div id="map"></div>*/}
                      <button ref={"accept"} onClick={this.handleClick(false)} className={"button"}>Good Plane</button>
-                     {/*<MapContainer destinationLat={this.state.destinationLat} destinationLn={this.state.destinationLng}*/}
-                        {/*lat={this.state.lat} lng={this.state.lng} onMarkerClick={"place"} destinationTitle={"title"}/>*/}
+
                  </div>
+                <SimpleMap />
              </div>
 
         )
