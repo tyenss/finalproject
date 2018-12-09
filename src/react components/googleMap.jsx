@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker,Polyline } from 'google-maps-react';
 
 const mapStyles = {
-    width: '100%',
+    width: '50%',
     height: '100%'
 };
 
@@ -23,56 +23,62 @@ export class MapContainer extends Component
     constructor(props)
     {
         super(props);
-        this.props=
+        this.state=
         {
-            title:"Current location"
+            title:"Current location",
+            destinationLat:1,
+            destinationLng:1,
+            lat:0,
+            lng:0,
+            onMarkerClick:"Place",
+            destinationTitle:"Location"
         };
     }
 
     render()
     {
-        const pathCoordinates = [
-            { lat: this.props.lat, lng: this.state.lng },
-            { lat: this.props.destinationLat, lng:this.props.destinationLng }
-        ];
+        // const pathCoordinates = [
+        //     { lat: this.state.lat, lng: this.state.lng },
+        //     { lat: this.state.destinationLat, lng:this.state.destinationLng }
+        // ];
         return (
             <div>
                 <Map
-                google={this.props.google}
+                google={this.state.google}
                 zoom={5}
                 style={mapStyles}
                 initialCenter={{
-                lat: this.props.lat,
-                lng: this.props.lng}}
+                lat: this.state.lat,
+                lng: this.state.lng}}
                 />
                 <Marker
-                    onClick = { this.props.onMarkerClick }
-                    title = { this.props.title }
-                    position = {{ lat: this.props.lat, lng: this.props.lng }}
-                    name = { this.props.title }
+                    onClick = { this.state.onMarkerClick }
+                    title = { this.state.title }
+                    position = {{ lat: this.state.lat, lng: this.state.lng }}
+                    name = { this.state.title }
                 />
                 <Marker
-                    onClick = { this.props.onMarkerClick }
-                    title = { this.props.destinationTitle }
-                    position = {{ lat: this.props.destinationLat, lng: this.props.destinationLng }}
-                    name = { this.props.destinationTitle }
+                    onClick = { this.state.onMarkerClick }
+                    title = { this.state.destinationTitle }
+                    position = {{ lat: this.state.destinationLat, lng: this.state.destinationLng }}
+                    name = { this.state.destinationTitle }
                 />
-                <Polyline
-                    path={pathCoordinates}
-                    geodesic={true}
-                    options={{
-                        strokeColor: "#ff2527",
-                        strokeOpacity: 0.75,
-                        strokeWeight: 2,
-                        icons: [
-                            {
-                                // icon: lineSymbol,
-                                offset: "0",
-                                repeat: "20px"
-                            }
-                        ]
-                    }}
-                />
+                {/*<Polyline*/}
+                    {/*path={pathCoordinates}*/}
+                    {/*geodesic={true}*/}
+                    {/*options={{*/}
+                        {/*strokeColor: "#ff2527",*/}
+                        {/*strokeOpacity: 0.75,*/}
+                        {/*strokeWeight: 2,*/}
+                        {/*icons: [*/}
+                            {/*{*/}
+                                {/*// icon: lineSymbol,*/}
+                                {/*offset: "0",*/}
+                                {/*repeat: "20px"*/}
+                            {/*}*/}
+                        {/*]*/}
+                    {/*}}*/}
+                {/*/>*/}
             </div>
         );
     }

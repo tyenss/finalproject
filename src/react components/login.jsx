@@ -42,7 +42,7 @@ class Welcome extends React.Component
         let className = 'menu';
         let buttonName="submitButton";
         let inputTextClass="input";
-        // if (this.props.isActive) {
+        // if (this.state.isActive) {
         //     className += ' menu-active';
         // }
         return (

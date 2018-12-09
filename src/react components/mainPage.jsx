@@ -16,7 +16,14 @@ class MainPage extends React.Component
             airplane:"airplane",
             destination:"destination",
             cost:"cost",
-            logo:"logo"
+            logo:"logo",
+            title:"Current location",
+            destinationLat:1,
+            destinationLng:1,
+            lat:0,
+            lng:0
+            // onMarkerClick:"Place",
+            // destinationTitle:"Location"
         };
         this.handleClick = this.handleClick.bind(this);
     }
@@ -51,7 +58,8 @@ class MainPage extends React.Component
                      </div>
                      {/*<div id="map"></div>*/}
                      <button ref={"accept"} onClick={this.handleClick(false)} className={"button"}>Good Plane</button>
-                     {/*ReactDOM.render(<MapContainer/>,document.getElementById("root"));*/}
+                     <MapContainer destinationLat={this.state.destinationLat} destinationLn={this.state.destinationLng}
+                     lat={this.state.lat} lng={this.state.lng} onMarkerClick={"place"} destinationTitle={"title"}/>
                  </div>
              </div>
 

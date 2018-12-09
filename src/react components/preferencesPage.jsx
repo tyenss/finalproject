@@ -34,7 +34,7 @@ class MainPage extends React.Component
                 <p ref={"logo"}>{this.props.logo}</p>
                 {/*<div id="map"></div>*/}
                 <button ref={"accept"} onClick={this.handleClick(false)}>Good Plane</button>
-                ReactDOM.render(<MapContainer/>,document.getElementById("root"));
+                {/*<MapContainer />*/}
             </div>
         )
     }
