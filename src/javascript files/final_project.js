@@ -10,6 +10,12 @@ function login(user,pass){
 
 	//console.log(user);
 	//console.log(pass);
+	var airline_id="";
+	var airline_1 = "";
+	var logo="";
+	var plane="";
+	var dest="";
+	var cost="";
 
 	$.ajax(root_url + "sessions",
 	       {
@@ -23,8 +29,13 @@ function login(user,pass){
 		   },
 		   success: () =>
 		   {
-		       build_airlines_interface();
-			   ReactDOM.render(<MainPage airplane={"asdf"} airline={"asdf"}/>,document.getElementById("root"));
+			   build_airlines_interface();
+			   get_random_airline();
+			   get_airplane();
+			   get_flight();
+			   get_cost();
+			   //take in airline, airplane, destination, cost, logo
+			   ReactDOM.render(<MainPage airplane= {plane} airline={airline_1} destination={dest} logo={logo} cost={cost}/>,document.getElementById("root"));
 			   //get_airport(Lihue Airport);
 		   },
 		   error: (jqxhr, status, error) => {
@@ -55,9 +66,9 @@ var build_airlines_interface = function() {
 	       type: 'GET',
 	       xhrFields: {withCredentials: true},
 	       success: (airlines) => {
-		   for (let i=0; i<airlines.length; i++) {
-		       airline_list.append("<li>" + airlines[i].name + "</li>");
-		   }
+				for (let i=0; i<airlines.length; i++) {
+					airline_list.append("<li>" + airlines[i].name + "</li>");
+				}
 	       }
 	   });
 
@@ -80,4 +91,54 @@ var build_airlines_interface = function() {
     });
 
 }
+
+var get_random_airline = function(){
+	$.ajax(root_url + "airlines",
+	   {
+	       type: 'GET',
+	       xhrFields: {withCredentials: true},
+	       success: (airlines) => {
+				var rand = Math.random() * (airlines.length -1);
+				window.airline_1 = airlines[rand].name;
+				window.airline_id = airlines[rand].id;
+				window.logo = airlines[rand].logo_url;
+	       }
+	   });
+}
+
+var get_airplane = function(){
+	$.ajax(root_url + "planes",
+	   {
+	       type: 'GET',
+	       xhrFields: {withCredentials: true},
+	       success: (planes) => {
+				for (let i=0; i<planes.length; i++) {
+					if(planes[i].airline_id == window.airline_id){
+						window.plane = planes[i].name; //last plane with matching airline is the one we will use
+					}
+				}
+	       }
+	   });
+}
+
+var get_flight = function(){
+	$.ajax(root_url + "flights",
+	   {
+	       type: 'GET',
+	       xhrFields: {withCredentials: true},
+	       success: (flights) => {
+				for (let i=0; i<flights.length; i++) {
+					if(flights[i].airline_id == window.airline_id){
+						window.dest = flights[i].departure_id;
+					}
+				}
+	       }
+	   });
+}
+
+//randomly generate a cost for a flight
+var get_cost = function(){
+	window.cost = Math.random() * (700 - 200) + 200;
+}
+
 export {login};
