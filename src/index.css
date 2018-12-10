@@ -138,7 +138,7 @@ input
     color: #cdcdcd;
     border: 1px lightgray solid;
     text-align:center;
-    width:50%;
+    width:fit-content;
     height:50%;
 }
 
@@ -147,7 +147,6 @@ input
     width:300px;
     display:block;
     text-align:center;
-
 }
 
 .button
@@ -175,10 +174,9 @@ input
 
 }
 
-Map
+#map
 {
-    width: 100px;
-    height:100px;
+    /*alignment:center;*/
 }
 
 #acceptPage

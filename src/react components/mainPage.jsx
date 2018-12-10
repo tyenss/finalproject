@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import AcceptPage from "./acceptPage.jsx";
 import SimpleMap from "./googleMap.jsx";
 import {getRandomPicture} from "../javascript files/auxillaryFunctions";
+import {create_new_flight_info} from "../javascript files/finalProject";
 
 /*
 creates react components to display a tinder match and allows you to accept or decline them
@@ -36,7 +37,7 @@ class MainPage extends React.Component
             //function in API will call acceptPage.jsx
         } else
         {
-            //Call api that creates another tinder date
+            create_new_flight_info();
         }
     }
 
@@ -63,10 +64,10 @@ class MainPage extends React.Component
                      <button ref={"accept"} onClick={this.handleClick(false)} className={"button"}>Good Plane</button>
 
                  </div>
-                {/*<SimpleMap*/}
-                {/*//     destinationLat={5}*/}
-                {/*// destinationLng={5}*/}
-                {/*/>*/}
+                <SimpleMap
+                //     destinationLat={5}
+                // destinationLng={5}
+                />
              </div>
 
         )
