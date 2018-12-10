@@ -103,7 +103,8 @@ class SimpleMap extends React.Component
             lng:0
         }
     }
-    static defaultProps = {
+    static defaultProps =
+    {
         center: {
             lat: 59.95,
             lng: 30.33
@@ -124,19 +125,22 @@ class SimpleMap extends React.Component
                     <div style={{ height: '200px', width: '200px' }}>
                         <GoogleMapReact
                             bootstrapURLKeys={{ key: "AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg" }}
-                            defaultCenter={this.props.center}
-                            defaultZoom={this.props.zoom}
+                            defaultCenter={{
+                                lat: 59.95,
+                                lng: 30.33
+                            }}
+                            defaultZoom={11}
                         >
                             <AnyReactComponent
                                 lat={position.coords.latitude}
                                 lng={position.coords.longitude}
                                 text={'Current Location'}
                             />
-                            <AnyReactComponent
-                                lat={this.props.destinationLat}
-                                lng={this.props.destinationLng}
-                                text={'Destination'}
-                            />
+                            {/*<AnyReactComponent*/}
+                                {/*lat={this.props.destinationLat}*/}
+                                {/*lng={this.props.destinationLng}*/}
+                                {/*text={'Destination'}*/}
+                            {/*/>*/}
                         </GoogleMapReact>
                     </div>
                 );

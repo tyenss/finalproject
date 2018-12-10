@@ -63,7 +63,10 @@ class MainPage extends React.Component
                      <button ref={"accept"} onClick={this.handleClick(false)} className={"button"}>Good Plane</button>
 
                  </div>
-                {/*<SimpleMap />*/}
+                <SimpleMap
+                //     destinationLat={5}
+                // destinationLng={5}
+                />
              </div>
 
         )

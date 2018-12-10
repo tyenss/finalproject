@@ -1,18 +1,3 @@
-/*body {*/
-  /*margin: 0;*/
-  /*padding: 0;*/
-  /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",*/
-    /*"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",*/
-    /*sans-serif;*/
-  /*-webkit-font-smoothing: antialiased;*/
-  /*-moz-osx-font-smoothing: grayscale;*/
-/*}*/
-
-/*!*code {*!*/
-  /*!*font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",*!*/
-    /*!*monospace;*!*/
-/*!*}*/
-
 body
 {
     width: 100%;
@@ -22,12 +7,6 @@ body
     background-size: cover;
     background-color:palevioletred;
     background-blend-mode: color-burn, screen;
-    /*color: #fff;*/
-    /*background: linear-gradient(-45deg, #0031ff, #556ee7, #23A6D5, #42d5d5);*/
-    /*background-size: 400% 400%;*/
-    /*-webkit-animation: Gradient 15s ease infinite;*/
-    /*-moz-animation: Gradient 15s ease infinite;*/
-    /*animation: Gradient 15s ease infinite;*/
 }
 
 h1
@@ -189,6 +168,11 @@ input
     height: 100%;
     position: relative;
     display:block;
+}
+
+#entirePage
+{
+
 }
 
 Map
