@@ -8,10 +8,10 @@ creates react components to display a tinder match and allows you to accept or d
  */
 class MainPage extends React.Component
 {
-    constructor()
+    constructor(props)
     {
-        super();
-        this.props={
+        super(props);
+        this.state={
             airline:"airline",
             airplane:"airplane",
             destination:"destination",
@@ -42,6 +42,7 @@ class MainPage extends React.Component
     render() {
         return (
             <div id={"entirePage"}>
+                <h1 id={"linderTinder"}>Linder Tinder</h1>
                  <div className="mainTinderPage">
                      <button ref={"reject"} onClick={this.handleClick(true)} className={"button"}>Bad Plane</button>
                      <div className={"attributes"}>
@@ -55,7 +56,7 @@ class MainPage extends React.Component
                      <button ref={"accept"} onClick={this.handleClick(false)} className={"button"}>Good Plane</button>
 
                  </div>
-                <SimpleMap />
+                {/*<SimpleMap />*/}
              </div>
 
         )

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Emoji from 'react-emoji-render';
 
 /*
 creates react login component
@@ -15,7 +14,7 @@ class AcceptPage extends React.Component
     {
         return (
             <div id={"acceptPage"}>
-                <h1>Thank you for using Linder Tinder</h1>
+                <h1 id={"linderTinder"}>Thank you for using Linder Tinder</h1>
                 <p>Here is your ticket:</p>
                 <div>
                     <p>{this.props.name}</p>

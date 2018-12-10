@@ -19,7 +19,7 @@ body
     height: 90vh;
     background-image: url("./pictures/747Plane.jpg"), linear-gradient(to right, purple 0%, yellow 90%);
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: contain;
     background-color:palevioletred;
     background-blend-mode: color-burn, screen;
     /*color: #fff;*/
@@ -219,4 +219,12 @@ Map
     background: rgba(31, 47, 50, 0.75);
     border-left:#4B9CD3 solid 2px;
     border-right:#4B9CD3 solid 2px;
+}
+
+#linderTinder
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
