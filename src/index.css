@@ -1,7 +1,7 @@
 body
 {
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     background-image: url("./pictures/747Plane.jpg"), linear-gradient(to right, #790080 0%, #fff077 90%);
     background-repeat: no-repeat;
     background-size: cover;
@@ -138,13 +138,13 @@ input
     color: #cdcdcd;
     border: 1px lightgray solid;
     text-align:center;
-    width:fit-content;
+    width:50%;
     height:50%;
 }
 
 .attributes
 {
-    width:150px;
+    width:300px;
     display:block;
     text-align:center;
 
@@ -159,7 +159,7 @@ input
     border: 1px solid black;
     background:linear-gradient(to top, #122280 0%, #0bffad 90%);
     border-radius:5px;
-    /*width:20%*/
+    /*width:30%*/
 }
 
 #entirePage,#acceptPage
@@ -213,11 +213,11 @@ img
 
 img:hover
 {
-    transform: scale(1.5, 1.5);
-    -moz-transform: scale(1.5, 1.5);
-    -ms-transform: scale(1.5, 1.5);
-    -webkit-transform: scale(1.5, 1.5);
-    -o-transform: scale(1.5, 1.5);
+    transform: scale(3, 3);
+    -moz-transform: scale(3, 3);
+    -ms-transform: scale(3, 3);
+    -webkit-transform: scale(3, 3);
+    -o-transform: scale(3, 3);
 }
 
 #attributes

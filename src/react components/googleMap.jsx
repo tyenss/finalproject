@@ -122,7 +122,7 @@ class SimpleMap extends React.Component
             {
                 return (
                     // Important! Always set the container height explicitly
-                    <div style={{ height: '200px', width: '200px' }}>
+                    <div style={{ height: '200px', width: '300px' }} id={"map"}>
                         <GoogleMapReact
                             bootstrapURLKeys={{ key: "AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg" }}
                             defaultCenter={{
