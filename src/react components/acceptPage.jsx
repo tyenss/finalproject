@@ -13,18 +13,23 @@ class AcceptPage extends React.Component
     render()
     {
         return (
-            <div id={"acceptPage"}>
-                <h1 id={"linderTinder"}>Thank you for using Linder Tinder</h1>
-                <p>Here is your ticket:</p>
-                <div>
-                    <p>{this.props.name}</p>
-                    <p>{this.props.departingTime}</p>
-                    <p>{this.props.arrivalTime}</p>
-                    <p>{this.props.flightID}</p>
-                    <p>{this.props.departingLocation}</p>
-                    <p>{this.props.arrivingLocation}</p>
-                    <p>{this.props.date}</p>
-
+            <div id={"entirePage"}>
+                <div id={"title"}>
+                    <h1 id={"linderTinder"}>Linder Tinder</h1>
+                    <h6>Love at its Highest</h6>
+                </div>
+                <div id={"acceptPage"}>
+                    <p>Thank you for using Linder Tinder</p>
+                    <p>Here is your plane's info:</p>
+                    <div id={"attributes"}>
+                        <p>Plane Name: {this.props.name}</p>
+                        <p>Departing Time: {this.props.departingTime}</p>
+                        <p>Arrival Time: {this.props.arrivalTime}</p>
+                        <p>Flight ID: {this.props.flightID}</p>
+                        <p>Departing Time: {this.props.departingLocation}</p>
+                        <p>Arrival Time: {this.props.arrivingLocation}</p>
+                        <p>Date: {this.props.date}</p>
+                    </div>
                 </div>
             </div>
         )}

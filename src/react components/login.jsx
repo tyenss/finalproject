@@ -48,7 +48,10 @@ class Welcome extends React.Component
         return (
 
             <div>
-                <h1 id={"linderTinder"}>Linder Tinder</h1>
+                <div id={"title"}>
+                    <h1 id={"linderTinder"}>Linder Tinder</h1>
+                    <h6>Love at its Highest</h6>
+                </div>
                 <form className={className} onSubmit={this.handleSubmit.bind(this)}>
                     <label>
                         {/*Username:*/}

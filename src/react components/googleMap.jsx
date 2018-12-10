@@ -113,25 +113,23 @@ class SimpleMap extends React.Component
 
     render()
     {
-        // let lat=0;
-        // let lng=0;
-        if (navigator.geolocation) {
+        if (navigator.geolocation)
+        {
 
 // Get the user's current position
-            navigator.geolocation.getCurrentPosition(function(position) {
-                let lat=position.coords.latitude;
-                let lng=position.coords.longitude;
+            navigator.geolocation.getCurrentPosition(function(position)
+            {
                 return (
                     // Important! Always set the container height explicitly
-                    <div style={{ height: '100vh', width: '100%' }}>
+                    <div style={{ height: '200px', width: '200px' }}>
                         <GoogleMapReact
                             bootstrapURLKeys={{ key: "AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg" }}
                             defaultCenter={this.props.center}
                             defaultZoom={this.props.zoom}
                         >
                             <AnyReactComponent
-                                lat={lat}
-                                lng={lng}
+                                lat={position.coords.latitude}
+                                lng={position.coords.longitude}
                                 text={'Current Location'}
                             />
                             <AnyReactComponent
@@ -142,11 +140,16 @@ class SimpleMap extends React.Component
                         </GoogleMapReact>
                     </div>
                 );
+
+            }, function(error)
+            {
+                alert("Could not get current position")
             });
-        } else {
+        } else
+            {
             alert('Geolocation is not supported in your browser');
-            return <div></div>
         }
+        return <div></div>;
 
     }
 }
