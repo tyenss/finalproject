@@ -8,6 +8,7 @@ class SimpleMap extends React.Component
     constructor(props)
     {
         super(props);
+        console.log(this.props.latitude);
         this.state=
         {
             lat:0,
@@ -20,26 +21,29 @@ class SimpleMap extends React.Component
             lat: 59.95,
             lng: 30.33
         },
-        zoom: 11
+        zoom: 6
     };
 
     render()
     {
-        return (
+        return(
             // Important! Always set the container height explicitly
             <div style={{ height: '200px', width: '300px' }} id={"map"}>
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: "AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg" }}
-                    defaultCenter={{
-                        lat: 59.95,
-                        lng: 30.33
-                    }}
-                    defaultZoom={11} id={"map"}>
-                    {/*<AnyReactComponent*/}
-                    {/*lat={position.coords.latitude}*/}
-                    {/*lng={position.coords.longitude}*/}
-                    {/*text={'Current Location'}*/}
-                    {/*/>*/}
+                    bootstrapURLKeys={{ key: "AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg"}}
+                    defaultCenter={this.props.center}
+                    defaultZoom={this.props.zoom}
+                >
+                {/*<GoogleMapReact*/}
+                    {/*bootstrapURLKeys={{ key: "AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg" }}*/}
+                    {/*defaultCenter={{*/}
+                        {/*lat: 59.95,*/}
+                        {/*lng: 30.33*/}
+                    {/*}}*/}
+                    {/*defaultZoom={11}*/}
+                    {/*id={"map"}*/}
+                {/*>*/}
+                    {/*<MyGreatPlace lat={59.955413} lng={30.337844} text={'Current Location'}/>*/}
                     {/*<AnyReactComponent*/}
                     {/*lat={this.props.destinationLat}*/}
                     {/*lng={this.props.destinationLng}*/}
@@ -48,46 +52,6 @@ class SimpleMap extends React.Component
                 </GoogleMapReact>
             </div>
         );
-        if (navigator.geolocation)
-        {
-
-// Get the user's current position
-            navigator.geolocation.getCurrentPosition(function(position)
-            {
-                return (
-                    // Important! Always set the container height explicitly
-                    <div style={{ height: '200px', width: '300px' }} id={"map"}>
-                        <GoogleMapReact
-                            bootstrapURLKeys={{ key: "AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg" }}
-                            defaultCenter={{
-                                lat: 59.95,
-                                lng: 30.33
-                            }}
-                            defaultZoom={11}
-                        >
-                            {/*<AnyReactComponent*/}
-                                {/*lat={position.coords.latitude}*/}
-                                {/*lng={position.coords.longitude}*/}
-                                {/*text={'Current Location'}*/}
-                            {/*/>*/}
-                            {/*<AnyReactComponent*/}
-                                {/*lat={this.props.destinationLat}*/}
-                                {/*lng={this.props.destinationLng}*/}
-                                {/*text={'Destination'}*/}
-                            {/*/>*/}
-                        </GoogleMapReact>
-                    </div>
-                );
-
-            }, function(error)
-            {
-                alert("Could not get current position")
-            });
-        } else
-            {
-            alert('Geolocation is not supported in your browser');
-        }
-        return <div></div>;
 
     }
 }
