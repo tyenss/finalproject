@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb8f48bd-0b5e-4827-97b4-cf1de7197809" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/react components/googleMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/react components/googleMap.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/react components/mainPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/react components/mainPage.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -23,14 +20,14 @@
           <entry key="css" value="975" />
           <entry key="html" value="26" />
           <entry key="js" value="716" />
-          <entry key="jsx" value="1564" />
+          <entry key="jsx" value="1568" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="975" />
           <entry key="HTML" value="26" />
-          <entry key="JSX Harmony" value="1564" />
+          <entry key="JSX Harmony" value="1568" />
           <entry key="JavaScript" value="716" />
         </counts>
       </usages-collector>
@@ -99,8 +96,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/react components/mainPage.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="56" column="67" selection-start-line="56" selection-start-column="67" selection-end-line="56" selection-end-column="67" />
+            <state relative-caret-position="296">
+              <caret line="60" column="50" selection-start-line="60" selection-start-column="50" selection-end-line="60" selection-end-column="50" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -361,7 +358,7 @@
       <workItem from="1544381625624" duration="977000" />
       <workItem from="1544394910734" duration="4753000" />
       <workItem from="1544399749414" duration="710000" />
-      <workItem from="1544426849425" duration="15246000" />
+      <workItem from="1544426849425" duration="15277000" />
     </task>
     <task id="LOCAL-00001" summary="Started Project">
       <created>1543676124251</created>
@@ -395,7 +392,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71843000" />
+    <option name="totallyTimeSpent" value="71874000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -600,8 +597,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/react components/mainPage.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="56" column="67" selection-start-line="56" selection-start-column="67" selection-end-line="56" selection-end-column="67" />
+        <state relative-caret-position="296">
+          <caret line="60" column="50" selection-start-line="60" selection-start-column="50" selection-end-line="60" selection-end-column="50" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
