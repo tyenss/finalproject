@@ -8,7 +8,7 @@ class SimpleMap extends React.Component
     constructor(props)
     {
         super(props);
-        console.log(this.props.latitude);
+        console.log(this.props);
         this.state=
         {
             lat:0,
@@ -18,7 +18,7 @@ class SimpleMap extends React.Component
     static defaultProps =
     {
         center: {
-            lat: 59.95,
+            lat: 60,
             lng: 30.33
         },
         zoom: 6
@@ -26,12 +26,17 @@ class SimpleMap extends React.Component
 
     render()
     {
+        let x=this.props.latitude;
+        let y=this.props.longitude;
         return(
             // Important! Always set the container height explicitly
             <div style={{ height: '200px', width: '300px' }} id={"map"}>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: "AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg"}}
-                    defaultCenter={this.props.center}
+                    defaultCenter={{
+                        lat:x,
+                        lng:y
+                    }}
                     defaultZoom={this.props.zoom}
                 >
                 {/*<GoogleMapReact*/}

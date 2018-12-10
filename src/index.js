@@ -11,7 +11,7 @@ import AcceptPage from "./react components/acceptPage";
 document.addEventListener("DOMContentLoaded", function(event)
 {
     ReactDOM.render(<MainPage airline={"airline"} airplane={"swer"} cost={"100"}
-                             destination={"Place"} logo={"We Like to fly"} //lat={0} lng={0}
+                             destination={"Place"} logo={"We Like to fly"} lat={0} lng={0}
                 />,document.getElementById("root"));
     // ReactDOM.render(<Welcome/>,document.getElementById("root"));
     // ReactDOM.render(<AcceptPage name={"thing"} departingTime={"15:36"} arrivalTime={"16:38"}

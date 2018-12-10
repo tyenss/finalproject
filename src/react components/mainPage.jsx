@@ -64,7 +64,7 @@ class MainPage extends React.Component
                      <button ref={"accept"} onClick={this.handleClick.bind(this,false)} className={"button"}>Good Plane</button>
 
                  </div>
-                <SimpleMap latitude={50.0} longitude={30.0}
+                <SimpleMap latitude={this.props.lat} longitude={this.props.lng}
                 //     destinationLat={5}
                 // destinationLng={5}
                 />
