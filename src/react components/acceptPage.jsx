@@ -19,6 +19,7 @@ class AcceptPage extends React.Component
                     <div id={"attributes"}>
                         <p>Ticket owner: {this.props.personName}</p>
                         <p>Confirmation Code: {this.props.confirmation}</p>
+                        <p>Row: {this.props.row}</p> 
                         <p>Seat: {this.props.seat}</p>
                         <p>Plane Name: {this.props.name}</p>
                         <p>Departing Time: {this.props.departingTime}</p>

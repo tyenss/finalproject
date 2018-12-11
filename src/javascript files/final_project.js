@@ -11,7 +11,7 @@ let root_url = "http://comp426.cs.unc.edu:3001/";
 var airline_id={id:""};
 var airline_1 = {al:""};
 var logo={lg:""};
-var plane={pv:""};
+var plane={pv:"",id:""};
 var dest={dv:""};
 var cost={cv:""};
 var dept_time={dt:""};
@@ -29,7 +29,8 @@ var l_name={l:""};
 var age={a:""};
 var gender={g:""};
 var email={e:""};
-var plane_id={pi:""};
+var seat={r:"",n:""};
+var confirmation={c:""};
 
 function login(user,pass){
 
@@ -95,7 +96,6 @@ function create_new_flight_info(){
 export function create_accept_page(){
 	get_date(date,flight_id)
 	  .then(success=> {
-		  get_customer_data();
 		  make_a_ticket();
 	  })
 	  .then(success => {
@@ -104,8 +104,17 @@ export function create_accept_page(){
 	  .then(success => {
 		  make_seat();
 	  })
+	  .then(success=> {
+		  get_ticket();
+	  })
 	  .then(success => {
-		  ReactDOM.render(<AcceptPage personName={f_name.f} age={age.a} gender={gender.g} name={plane.pv} departingTime={dept_time.dt}
+		  get_itinerary();
+	  })
+	  .then(success => {
+		  get_seat();
+	  })
+	  .then(success => {
+		  ReactDOM.render(<AcceptPage personName={f_name.f} confirmation={confirmation.c} seat={seat.n} row={seat.r} name={plane.pv} departingTime={dept_time.dt}
 			arrivalTime={arr_time.at} flightID={flight_id.fi} 
 			arrivingLocation={arr_airport.aa} date={date.d}/>,document.getElementById("root"));
 	  })	
@@ -116,12 +125,56 @@ export function link_to_pref_page(){
 }
 
 export function create_ticket_api(){
-	make_a_ticket()
-	  .then(success => {
-		  get_customer_data();
-		//ReactDOM.render(<PreferencesPage first={f_name.f} last={l_name.l}
-		//age={age.a} gender={gender.g} email={email.e}/>,document.getElementById("root"));
-	  })
+	make_a_ticket();
+}
+
+function get_seat(){
+	return $.ajax(root_url + "seats",
+	   {
+	       type: 'GET',
+	       xhrFields: {withCredentials: true},
+	       success: (seats) => {
+				for (let i=0; i<seats.length; i++) {
+					if(seats[i].plane_id === plane.id){
+						seat.r = seats[i].row;
+						seat.n = seats[i].number;
+					}
+				}
+		   }
+	   });
+}
+
+function get_itinerary(){
+	return $.ajax(root_url + "itineraries",
+	   {
+	       type: 'GET',
+	       xhrFields: {withCredentials: true},
+	       success: (itineraries) => {
+				for (let i=0; i<itineraries.length; i++) {
+					if(itineraries[i].email === email.e){
+						confirmation.c = itineraries[i].confirmation_code;
+					}
+				}
+		   }
+	   });
+}
+
+function get_ticket(){
+	return $.ajax(root_url + "tickets",
+	   {
+	       type: 'GET',
+	       xhrFields: {withCredentials: true},
+	       success: (tickets) => {
+				for (let i=0; i<tickets.length; i++) {
+					if(tickets[i].instance_id === instance_id.i){
+						f_name.f = tickets[i].first_name;
+						l_name.l = tickets[i].last_name;
+						age.a = tickets[i].age;
+						gender.g = tickets[i].gender;
+					}
+				}
+		   }
+	   });
 }
 
 
@@ -167,14 +220,14 @@ function make_itinerary(email){
 
 function make_seat(){
 	var is_window = Math.random() >= 0.5
-	var alphabet = "abcdefghijklm";
+	var alphabet = "ABCDEFG";
 
 	return $.ajax(root_url + 'seats', {
 		type: 'POST',
 		xhrFields: { withCredentials: true },
 		data: {
 			"seat": {
-				"plane_id": plane_id.pi,
+				"plane_id": plane.id,
 				"number": alphabet[Math.floor(Math.random() * alphabet.length)],
 				"row":Math.floor(Math.random() * (24-1)+1).toString(),
 				"is_window":is_window,
@@ -190,12 +243,6 @@ function make_seat(){
 	});
 }
 
-function get_customer_data(){
-	f_name.f = $("#firstText").val();
-	age.a = $("#ageText").val();
-	l_name.l = $("#lastText").val();
-	gender.g = $("#genderText").val();
-}
 
 var get_random_airline = function(airline_1,airline_id,logo){
 	
@@ -221,7 +268,7 @@ var get_airplane = function(airline_id,plane){
 				for (let i=0; i<planes.length; i++) {
 					if(planes[i].airline_id === airline_id.id){
 						plane.pv = planes[i].name; //last plane with matching airline is the one we will use
-						plane_id.pi = planes[i].id;
+						plane.id = planes[i].id;
 					}
 				}
 		   }
