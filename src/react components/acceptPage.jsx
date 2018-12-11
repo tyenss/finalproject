@@ -5,11 +5,6 @@ creates react login component
  */
 class AcceptPage extends React.Component
 {
-    constructor(props)
-    {
-        super(props);
-    }
-
     render()
     {
         return (

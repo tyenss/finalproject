@@ -1,6 +1,6 @@
 import React from 'react';
 import SimpleMap from "./googleMap.jsx";
-import {create_new_flight_info,create_accept_page, link_to_pref_page} from "../javascript files/final_project";
+import {create_new_flight_info, link_to_pref_page} from "../javascript files/final_project";
 import url1 from "../pictures/747Plane.jpg";
 import url2 from "../pictures/Boeing.png";
 import url3 from "../pictures/airplane-boeing.jpg";

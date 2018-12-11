@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import ReactDOM from "react-dom";
-import AcceptPage from "./acceptPage.jsx";
-import {create_ticket_api,create_accept_page} from "../javascript files/final_project"
+import React from 'react';
+import {create_accept_page} from "../javascript files/final_project"
 
 
 /*
@@ -58,11 +56,15 @@ class PreferencesPage extends React.Component
         let buttonName="submitButton";
         let inputTextClass="input";
         return (
-            <div>
-                <div id={"title"}>
+            <div id={"entirePage"}>
+                <div id={"preferenceTitle"}>
+                    <h1 id={"linderTinder"}>Linder Tinder</h1>
+                    <h6>Love at its Highest</h6>
                     <h1 id={"pref"}>Passenger Information</h1>
+                    <br/>
                 </div>
                 <form className={className} onSubmit={this.handleSubmit.bind(this)}>
+
                     <label>
                         {/*Username:*/}
                         <input type="text" name="firstname" value={this.state.first}
