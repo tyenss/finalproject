@@ -44,14 +44,12 @@ function create_new_flight_info(){
 	var arr_time={at:""};
 	var flight_id={fi:""};
 	var arr_loc={al:""};
-	var date={d:""};
 	var dept_airport={da:""};
 	var arr_airport={aa:""};
 	var lat={l:""};
 	var long={l:""};
 
 	//build_airlines_interface();
-	console.log("beFORE");
 	get_random_airline(airline_1,airline_id,logo)
 	  .then(success => get_airplane(airline_id,plane))
 	  .then(success => get_flight(airline_id, dest, dept_time, arr_time, flight_id, arr_loc))
@@ -82,7 +80,6 @@ export function create_accept_page(){
 	var long={l:""};
 
 	//build_airlines_interface();
-	console.log("beFORE");
 	get_random_airline(airline_1,airline_id,logo)
 	  .then(success => get_airplane(airline_id,plane))
 	  .then(success => get_flight(airline_id, dest, dept_time, arr_time, flight_id, arr_loc))
@@ -90,7 +87,6 @@ export function create_accept_page(){
 	  .then(success => get_cost(cost))
 	  .then(success => get_airport(dest,arr_loc,dept_airport,arr_airport,lat,long))
 	  .then(success => {
-		  console.log(arr_loc.al);
 		  /*console.log(arr_airport.aa);
 		  console.log(date.d);
 		  console.log(lat.l);

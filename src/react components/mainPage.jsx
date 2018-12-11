@@ -58,14 +58,12 @@ class MainPage extends React.Component
                          <p ref={"destination"} id={"destination"}>Destination: {this.props.destination}</p>
                          <p ref={"cost"} id={"cost"}>Cost: ${this.props.cost}</p>
                          <p ref={"logo"} id={"logo"}>Motto: {this.props.logo}</p>
-                         <p ref={"latitude"} id={"latitude"}>Latitude: {this.props.latitude}</p>
-                         <p ref={"longitude"} id={"longitude"}>Longitude: {this.props.longitude}</p>
                      </div>
                      {/*<div id="map"></div>*/}
                      <button ref={"accept"} onClick={this.handleClick.bind(this,true)} className={"button"}>Good Plane</button>
 
                  </div>
-                <SimpleMap latitude={this.props.lat} longitude={this.props.lng}
+                <SimpleMap latitude={this.props.latitude} longitude={this.props.longitude}
                 //     destinationLat={5}
                 // destinationLng={5}
                 />
