@@ -39,6 +39,8 @@ function create_new_flight_info(){
 	var plane={pv:""};
 	var dest={dv:""};
 	var cost={cv:""};
+	var dept_time={dt:""};
+
 	//build_airlines_interface();
 	console.log("beFORE");
 	get_random_airline(airline_1,airline_id,logo)
@@ -47,8 +49,8 @@ function create_new_flight_info(){
 	  .then(success => get_cost(cost))
 	  .then(success => {
 		  console.log(airline_1.al);
-		  ReactDOM.render(<MainPage airline={airline_1} airplane={plane} cost={cost}
-			destination={dest} logo={logo}/>,document.getElementById("root"));
+		  ReactDOM.render(<MainPage airline={airline_1.al} airplane={plane.pv} cost={cost.cv}
+			destination={dest.dv} logo={logo.lg}/>,document.getElementById("root"));
 	  })	
 }
 
