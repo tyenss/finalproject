@@ -1,5 +1,5 @@
 import React from 'react';
-import {login} from "../javascript files/final_project";
+import {login, link_to_pref_page} from "../javascript files/final_project";
 /*
 creates react login component
  */

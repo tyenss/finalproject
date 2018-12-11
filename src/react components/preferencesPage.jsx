@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import AcceptPage from "./acceptPage.jsx";
-import {create_new_flight_info, login} from "../javascript files/final_project";
+import {create_ticket_api,create_accept_page} from "../javascript files/final_project"
+
 
 /*
 creates react components to display a tinder match and allows you to accept or decline them
@@ -11,16 +12,22 @@ class PreferencesPage extends React.Component
     constructor()
     {
         super();
-        this.props={first:"",
+        this.state={first:"",
             last:"",
             age:"",
             gender:"",
             email:""
         };
-        this.handleClick = this.handleClick.bind(this);
+        this.handleChangeFirst = this.handleChangeFirst.bind(this);
+        this.handleChangeLast = this.handleChangeLast.bind(this);
+        this.handleChangeAge = this.handleChangeAge.bind(this);
+        this.handleChangeGender = this.handleChangeGender.bind(this);
+        this.handleChangeEmail = this.handleChangeEmail.bind(this);
     }
     handleSubmit()
     {
+        create_accept_page();
+        //create_ticket_api();
         //functionThing(
         //create_new_flight_info(document.getElementById("firstText").value,document.getElementById("lastText").value,
         // document.getElementById("ageText").value,document.getElementById("genderText").value,
@@ -28,22 +35,22 @@ class PreferencesPage extends React.Component
         //login(document.getElementById("userText").value,document.getElementById("passText").value);
     }
     handleChangeFirst(event) {
-        this.setState({value: event.target.value});
+        this.setState({first: event.target.value});
     }
 
     handleChangeLast(event) {
-        this.setState({password: event.target.value});
+        this.setState({last: event.target.value});
     }
     handleChangeAge(event) {
-        this.setState({value: event.target.value});
+        this.setState({age: event.target.value});
     }
 
     handleChangeGender(event) {
-    this.setState({password: event.target.value});
+    this.setState({gender: event.target.value});
     }
 
     handleChangeEmail(event) {
-        this.setState({password: event.target.value});
+        this.setState({email: event.target.value});
     }
 
     render() {
@@ -51,7 +58,10 @@ class PreferencesPage extends React.Component
         let buttonName="submitButton";
         let inputTextClass="input";
         return (
-            <div className="Preferences">
+            <div>
+                <div id={"title"}>
+                    <h1 id={"pref"}>Passenger Information</h1>
+                </div>
                 <form className={className} onSubmit={this.handleSubmit.bind(this)}>
                     <label>
                         {/*Username:*/}
@@ -74,12 +84,12 @@ class PreferencesPage extends React.Component
                                onChange={this.handleChangeGender}
                                className={inputTextClass}
                                id={"genderText"}
-                               placeholder="last name"/>
+                               placeholder="gender"/>
                         <input type="text" name="email" value={this.state.email}
                                onChange={this.handleChangeEmail}
                                className={inputTextClass}
                                id={"emailText"}
-                               placeholder="last name"/>
+                               placeholder="email"/>
                     </label>
                     <input type="button" value="Submit" className={buttonName} onClick={this.handleSubmit.bind(this)}/>
                 </form>

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';// needed
 import $ from 'jquery';
 import MainPage from "../react components/mainPage.jsx";
 import AcceptPage from "../react components/acceptPage.jsx";
+import PreferencesPage from "../react components/preferencesPage.jsx";
 window.$ = $;
 let root_url = "http://comp426.cs.unc.edu:3001/";
 
@@ -22,8 +23,18 @@ var dept_airport={da:""};
 var arr_airport={aa:""};
 var lat={l:""};
 var long={l:""};
+var instance_id = {i:""}
+var f_name={f:""};
+var l_name={l:""};
+var age={a:""};
+var gender={g:""};
+var email={e:""};
+var plane_id={pi:""};
 
 function login(user,pass){
+
+	//console.log(user);
+	//console.log(pass);
 
 	$.ajax(root_url + "sessions",
 	       {
@@ -62,6 +73,12 @@ function create_new_flight_info(){
 	arr_airport={aa:""};
 	lat={l:""};
 	long={l:""};
+	instance_id={i:""};
+	f_name={f:""};
+	l_name={l:""};
+	age={a:""};
+	gender={g:""};
+	email={e:""};
 	//build_airlines_interface();
 	get_random_airline(airline_1,airline_id,logo)
 	  .then(success => get_airplane(airline_id,plane))
@@ -77,11 +94,107 @@ function create_new_flight_info(){
 
 export function create_accept_page(){
 	get_date(date,flight_id)
+	  .then(success=> {
+		  get_customer_data();
+		  make_a_ticket();
+	  })
 	  .then(success => {
-		  ReactDOM.render(<AcceptPage name={plane.pv} departingTime={dept_time.dt}
+		  make_itinerary(email);
+	  })
+	  .then(success => {
+		  make_seat();
+	  })
+	  .then(success => {
+		  ReactDOM.render(<AcceptPage personName={f_name.f} age={age.a} gender={gender.g} name={plane.pv} departingTime={dept_time.dt}
 			arrivalTime={arr_time.at} flightID={flight_id.fi} 
 			arrivingLocation={arr_airport.aa} date={date.d}/>,document.getElementById("root"));
 	  })	
+}
+
+export function link_to_pref_page(){
+	ReactDOM.render(<PreferencesPage/>,document.getElementById("root"));
+}
+
+export function create_ticket_api(){
+	make_a_ticket()
+	  .then(success => {
+		  get_customer_data();
+		//ReactDOM.render(<PreferencesPage first={f_name.f} last={l_name.l}
+		//age={age.a} gender={gender.g} email={email.e}/>,document.getElementById("root"));
+	  })
+}
+
+
+function make_a_ticket(){
+	return $.ajax(root_url + 'tickets', {
+		type: 'POST',
+		xhrFields: { withCredentials: true },
+		data: {
+			"ticket": {
+				"first_name": $("#firstText").val(),
+				"last_name": $("#lastText").val(),
+				"age": parseInt($("#ageText").val(), 10),
+				"gender": $("#genderText").val(),
+				"is_purchased": true,
+				"instance_id": instance_id.i,
+			}
+		},
+		success: function (make_a_ticket) {
+			alert("Purchased!");
+		}
+
+
+	});
+}
+
+function make_itinerary(email){
+	return $.ajax(root_url + 'itineraries', {
+		type: 'POST',
+		xhrFields: { withCredentials: true },
+		data: {
+			"itinerary": {
+				"confirmation_code": Math.floor(Math.random() * (276000 - 270000) + 270000),
+				"email": email.e,
+			}
+		},
+		success: function (make_itinerary) {
+			alert("Itinerary made!");
+		}
+
+
+	});
+}
+
+function make_seat(){
+	var is_window = Math.random() >= 0.5
+	var alphabet = "abcdefghijklm";
+
+	return $.ajax(root_url + 'seats', {
+		type: 'POST',
+		xhrFields: { withCredentials: true },
+		data: {
+			"seat": {
+				"plane_id": plane_id.pi,
+				"number": alphabet[Math.floor(Math.random() * alphabet.length)],
+				"row":Math.floor(Math.random() * (24-1)+1).toString(),
+				"is_window":is_window,
+				"is_aisle":!is_window,
+				"is_exit":is_window,
+			}
+		},
+		success: function (make_seat) {
+			alert("seat made!");
+		}
+
+
+	});
+}
+
+function get_customer_data(){
+	f_name.f = $("#firstText").val();
+	age.a = $("#ageText").val();
+	l_name.l = $("#lastText").val();
+	gender.g = $("#genderText").val();
 }
 
 var get_random_airline = function(airline_1,airline_id,logo){
@@ -108,6 +221,7 @@ var get_airplane = function(airline_id,plane){
 				for (let i=0; i<planes.length; i++) {
 					if(planes[i].airline_id === airline_id.id){
 						plane.pv = planes[i].name; //last plane with matching airline is the one we will use
+						plane_id.pi = planes[i].id;
 					}
 				}
 		   }
@@ -142,11 +256,11 @@ var get_airport = function(dest,arr_loc,dept_airport,arr_airport,lat,long){
 				for (let i=0; i<airports.length; i++) {
 					if(airports[i].id === dest.dv){
 						dept_airport.da = airports[i].city;
-						lat.l = airports[i].latitude;
-						long.l = airports[i].longitude;
 					}
 					if(airports[i].id === arr_loc.al){
 						arr_airport.aa = airports[i].city;
+						lat.l = airports[i].latitude;
+						long.l = airports[i].longitude;
 					}
 				}
 		   }
@@ -162,6 +276,7 @@ var get_date = function(date,flight_id){
 				for (let i=0; i<instances.length; i++) {
 					if(instances[i].flight_id === flight_id.fi){
 						date.d = instances[i].date;
+						instance_id.i = instances[i].id;
 					}
 				}
 		   }
