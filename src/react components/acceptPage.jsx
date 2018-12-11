@@ -26,7 +26,6 @@ class AcceptPage extends React.Component
                         <p>Departing Time: {this.props.departingTime}</p>
                         <p>Arrival Time: {this.props.arrivalTime}</p>
                         <p>Flight ID: {this.props.flightID}</p>
-                        <p>Departing Location: {this.props.departingLocation}</p>
                         <p>Arrival Location: {this.props.arrivingLocation}</p>
                         <p>Date: {this.props.date}</p>
                     </div>

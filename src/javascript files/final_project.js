@@ -82,7 +82,7 @@ export function create_accept_page(){
 	get_date(date,flight_id)
 	  .then(success => {
 		  ReactDOM.render(<AcceptPage name={plane.pv} departingTime={dept_time.dt}
-			arrivalTime={arr_time.at} flightID={flight_id.fi} departingLocation={dept_airport.da} 
+			arrivalTime={arr_time.at} flightID={flight_id.fi} 
 			arrivingLocation={arr_airport.aa} date={date.d}/>,document.getElementById("root"));
 	  })	
 }
