@@ -7,6 +7,22 @@ window.$ = $;
 let root_url = "http://comp426.cs.unc.edu:3001/";
 
 
+var airline_id={id:""};
+var airline_1 = {al:""};
+var logo={lg:""};
+var plane={pv:""};
+var dest={dv:""};
+var cost={cv:""};
+var dept_time={dt:""};
+var arr_time={at:""};
+var flight_id={fi:""};
+var arr_loc={al:""};
+var date={d:""};
+var dept_airport={da:""};
+var arr_airport={aa:""};
+var lat={l:""};
+var long={l:""};
+
 function login(user,pass){
 
 	//console.log(user);
@@ -34,21 +50,21 @@ function login(user,pass){
 }
 
 function create_new_flight_info(){
-	var airline_id={id:""};
-	var airline_1 = {al:""};
-	var logo={lg:""};
-	var plane={pv:""};
-	var dest={dv:""};
-	var cost={cv:""};
-	var dept_time={dt:""};
-	var arr_time={at:""};
-	var flight_id={fi:""};
-	var arr_loc={al:""};
-	var dept_airport={da:""};
-	var arr_airport={aa:""};
-	var lat={l:""};
-	var long={l:""};
-
+	airline_id={id:""};
+	airline_1 = {al:""};
+	logo={lg:""};
+	plane={pv:""};
+	dest={dv:""};
+	cost={cv:""};
+	dept_time={dt:""};
+	arr_time={at:""};
+	flight_id={fi:""};
+	arr_loc={al:""};
+	date={d:""};
+	dept_airport={da:""};
+	arr_airport={aa:""};
+	lat={l:""};
+	long={l:""};
 	//build_airlines_interface();
 	get_random_airline(airline_1,airline_id,logo)
 	  .then(success => get_airplane(airline_id,plane))
@@ -58,40 +74,13 @@ function create_new_flight_info(){
 	  .then(success => {
 		  console.log(airline_1.al);
 		  ReactDOM.render(<MainPage airline={airline_1.al} airplane={plane.pv} cost={cost.cv}
-			destination={dept_airport.da} logo={logo.lg} latitude={lat.l} longitude={long.l}/>,document.getElementById("root"));
+			destination={arr_airport.aa} logo={logo.lg} latitude={lat.l} longitude={long.l}/>,document.getElementById("root"));
 	  })	
 }
 
 export function create_accept_page(){
-	var airline_id={id:""};
-	var airline_1 = {al:""};
-	var logo={lg:""};
-	var plane={pv:""};
-	var dest={dv:""};
-	var cost={cv:""};
-	var dept_time={dt:""};
-	var arr_time={at:""};
-	var flight_id={fi:""};
-	var arr_loc={al:""};
-	var date={d:""};
-	var dept_airport={da:""};
-	var arr_airport={aa:""};
-	var lat={l:""};
-	var long={l:""};
-
-	//build_airlines_interface();
-	get_random_airline(airline_1,airline_id,logo)
-	  .then(success => get_airplane(airline_id,plane))
-	  .then(success => get_flight(airline_id, dest, dept_time, arr_time, flight_id, arr_loc))
-	  .then(success => get_date(date,flight_id))
-	  .then(success => get_cost(cost))
-	  .then(success => get_airport(dest,arr_loc,dept_airport,arr_airport,lat,long))
+	get_date(date,flight_id)
 	  .then(success => {
-		  /*console.log(arr_airport.aa);
-		  console.log(date.d);
-		  console.log(lat.l);
-		  console.log(long.l);*/
-
 		  ReactDOM.render(<AcceptPage name={plane.pv} departingTime={dept_time.dt}
 			arrivalTime={arr_time.at} flightID={flight_id.fi} departingLocation={dept_airport.da} 
 			arrivingLocation={arr_airport.aa} date={date.d}/>,document.getElementById("root"));
