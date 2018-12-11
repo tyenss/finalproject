@@ -47,6 +47,8 @@ function create_new_flight_info(){
 	var date={d:""};
 	var dept_airport={da:""};
 	var arr_airport={aa:""};
+	var lat={l:""};
+	var long={l:""};
 
 	//build_airlines_interface();
 	console.log("beFORE");
@@ -54,11 +56,11 @@ function create_new_flight_info(){
 	  .then(success => get_airplane(airline_id,plane))
 	  .then(success => get_flight(airline_id, dest, dept_time, arr_time, flight_id, arr_loc))
 	  .then(success => get_cost(cost))
-	  .then(success => get_airport(dest,arr_loc,dept_airport,arr_airport))
+	  .then(success => get_airport(dest,arr_loc,dept_airport,arr_airport,lat,long))
 	  .then(success => {
 		  console.log(airline_1.al);
 		  ReactDOM.render(<MainPage airline={airline_1.al} airplane={plane.pv} cost={cost.cv}
-			destination={dept_airport.da} logo={logo.lg}/>,document.getElementById("root"));
+			destination={dept_airport.da} logo={logo.lg} latitude={lat.l} longitude={long.l}/>,document.getElementById("root"));
 	  })	
 }
 
@@ -76,6 +78,8 @@ export function create_accept_page(){
 	var date={d:""};
 	var dept_airport={da:""};
 	var arr_airport={aa:""};
+	var lat={l:""};
+	var long={l:""};
 
 	//build_airlines_interface();
 	console.log("beFORE");
@@ -84,9 +88,14 @@ export function create_accept_page(){
 	  .then(success => get_flight(airline_id, dest, dept_time, arr_time, flight_id, arr_loc))
 	  .then(success => get_date(date,flight_id))
 	  .then(success => get_cost(cost))
-	  .then(success => get_airport(dest,arr_loc,dept_airport,arr_airport))
+	  .then(success => get_airport(dest,arr_loc,dept_airport,arr_airport,lat,long))
 	  .then(success => {
-		  console.log(airline_1.al);
+		  console.log(arr_loc.al);
+		  /*console.log(arr_airport.aa);
+		  console.log(date.d);
+		  console.log(lat.l);
+		  console.log(long.l);*/
+
 		  ReactDOM.render(<AcceptPage name={plane.pv} departingTime={dept_time.dt}
 			arrivalTime={arr_time.at} flightID={flight_id.fi} departingLocation={dept_airport.da} 
 			arrivingLocation={arr_airport.aa} date={date.d}/>,document.getElementById("root"));
@@ -134,7 +143,7 @@ var get_flight = function(airline_id, dest, dept_time, arr_time, flight_id, arr_
 						dest.dv = flights[i].departure_id;
 						dept_time.dt = flights[i].departs_at;
 						arr_time.at = flights[i].arrives_at;
-						flight_id.fi = flights[i].number;
+						flight_id.fi = flights[i].id;
 						arr_loc.al = flights[i].arrival_id;
 					}
 				}
@@ -142,7 +151,7 @@ var get_flight = function(airline_id, dest, dept_time, arr_time, flight_id, arr_
 	   });
 };
 
-var get_airport = function(dest,arr,dept_airport,arr_airport){
+var get_airport = function(dest,arr_loc,dept_airport,arr_airport,lat,long){
 	return $.ajax(root_url + "airports",
 	   {
 	       type: 'GET',
@@ -151,8 +160,10 @@ var get_airport = function(dest,arr,dept_airport,arr_airport){
 				for (let i=0; i<airports.length; i++) {
 					if(airports[i].id === dest.dv){
 						dept_airport.da = airports[i].name;
+						lat.l = airports[i].latitude;
+						long.l = airports[i].longitude;
 					}
-					if(airports[i].id === arr.dv){
+					if(airports[i].id === arr_loc.al){
 						arr_airport.aa = airports[i].name;
 					}
 				}
