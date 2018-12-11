@@ -144,12 +144,12 @@ var get_airport = function(dest,arr_loc,dept_airport,arr_airport,lat,long){
 	       success: (airports) => {
 				for (let i=0; i<airports.length; i++) {
 					if(airports[i].id === dest.dv){
-						dept_airport.da = airports[i].name;
+						dept_airport.da = airports[i].city;
 						lat.l = airports[i].latitude;
 						long.l = airports[i].longitude;
 					}
 					if(airports[i].id === arr_loc.al){
-						arr_airport.aa = airports[i].name;
+						arr_airport.aa = airports[i].city;
 					}
 				}
 		   }
