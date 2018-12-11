@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {login} from "../javascript files/final_project";
 /*
 creates react login component
@@ -22,6 +22,7 @@ class Welcome extends React.Component
     {
         login(document.getElementById("userText").value,document.getElementById("passText").value);
     }
+
     handleChangeUser(event) {
         this.setState({value: event.target.value});
     }

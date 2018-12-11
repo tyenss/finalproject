@@ -25,9 +25,6 @@ var long={l:""};
 
 function login(user,pass){
 
-	//console.log(user);
-	//console.log(pass);
-
 	$.ajax(root_url + "sessions",
 	       {
 		   type: 'POST',
