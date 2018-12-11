@@ -178,7 +178,7 @@ var get_date = function(date,flight_id){
 
 //randomly generate a cost for a flight
 var get_cost = function(cost){
-	cost.cv = Math.random() * (700 - 200) + 200;
+	cost.cv = Math.floor(Math.random() * (700 - 200) + 200);
 	return Promise.resolve(cost);
 }
 

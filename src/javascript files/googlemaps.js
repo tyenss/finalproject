@@ -1,2 +1,0 @@
-let APIkey="AIzaSyDieW8lTvVJ9TMnTEY5hUCZ5OHasZAnHmg";
-

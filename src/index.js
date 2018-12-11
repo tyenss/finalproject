@@ -1,10 +1,9 @@
-import React from 'react';//needed
-import ReactDOM from 'react-dom';// needed
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
 //import Welcome from './App';
 import * as serviceWorker from './serviceWorker';
-import Welcome from "./react components/login.jsx";//needed
-import {BackgroundVideo} from "./react components/backgroundVideo";
+import Welcome from "./react components/login.jsx";
 import MainPage from "./react components/mainPage.jsx";
 import AcceptPage from "./react components/acceptPage";
 
