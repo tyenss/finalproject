@@ -2,6 +2,7 @@ import React from 'react';//needed
 import ReactDOM from 'react-dom';// needed
 import $ from 'jquery';
 import MainPage from "../react components/mainPage.jsx";
+import AcceptPage from "../react components/acceptPage.jsx";
 window.$ = $;
 let root_url = "http://comp426.cs.unc.edu:3001/";
 
@@ -40,17 +41,55 @@ function create_new_flight_info(){
 	var dest={dv:""};
 	var cost={cv:""};
 	var dept_time={dt:""};
+	var arr_time={at:""};
+	var flight_id={fi:""};
+	var arr_loc={al:""};
+	var date={d:""};
+	var dept_airport={da:""};
+	var arr_airport={aa:""};
 
 	//build_airlines_interface();
 	console.log("beFORE");
 	get_random_airline(airline_1,airline_id,logo)
 	  .then(success => get_airplane(airline_id,plane))
-	  .then(success => get_flight(airline_id, dest))
+	  .then(success => get_flight(airline_id, dest, dept_time, arr_time, flight_id, arr_loc))
 	  .then(success => get_cost(cost))
+	  .then(success => get_airport(dest,arr_loc,dept_airport,arr_airport))
 	  .then(success => {
 		  console.log(airline_1.al);
 		  ReactDOM.render(<MainPage airline={airline_1.al} airplane={plane.pv} cost={cost.cv}
-			destination={dest.dv} logo={logo.lg}/>,document.getElementById("root"));
+			destination={dept_airport.da} logo={logo.lg}/>,document.getElementById("root"));
+	  })	
+}
+
+function create_accept_page(){
+	var airline_id={id:""};
+	var airline_1 = {al:""};
+	var logo={lg:""};
+	var plane={pv:""};
+	var dest={dv:""};
+	var cost={cv:""};
+	var dept_time={dt:""};
+	var arr_time={at:""};
+	var flight_id={fi:""};
+	var arr_loc={al:""};
+	var date={d:""};
+	var dept_airport={da:""};
+	var arr_airport={aa:""};
+
+	//build_airlines_interface();
+	console.log("beFORE");
+	get_random_airline(airline_1,airline_id,logo)
+	  .then(success => get_airplane(airline_id,plane))
+	  .then(success => get_flight(airline_id, dest, dept_time, arr_time, flight_id, arr_loc))
+	  .then(success => get_date(date,flight_id))
+	  .then(success => get_cost(cost))
+	  .then(success => get_airport(dest,arr_loc,dept_airport,arr_airport))
+	  .then(success => {
+		  console.log(airline_1.al);
+		  ReactDOM.render(<AcceptPage name={plane.pv} departingTime={dept_time.dt}
+			arrivalTime={arr_time.at} flightID={flight_id.fi} departingLocation={dept_airport.da} 
+			arrivingLocation={arr_airport.aa} date={date.d}/>,document.getElementById("root"));
 	  })	
 }
 
@@ -84,33 +123,62 @@ var get_airplane = function(airline_id,plane){
 	   });
 }
 
-var get_flight = function(airline_id, dest){
+var get_flight = function(airline_id, dest, dept_time, arr_time, flight_id, arr_loc){
 	return $.ajax(root_url + "flights",
 	   {
 	       type: 'GET',
 	       xhrFields: {withCredentials: true},
 	       success: (flights) => {
-
-	           for (let i=0; i<flights.length; i++) {
-                   if(flights[i].airline_id === airline_id.id){
-                       dest.dv = flights[i].departure_id;
-                   }
-               }
-               $.ajax(root_url + "flights/",
-                   {
-                       type: 'GET',
-                       xhrFields: {withCredentials: true},
-                       success: (response) => {
-
-                       }
-                   });
+				for (let i=0; i<flights.length; i++) {
+					if(flights[i].airline_id === airline_id.id){
+						dest.dv = flights[i].departure_id;
+						dept_time.dt = flights[i].departs_at;
+						arr_time.at = flights[i].arrives_at;
+						flight_id.fi = flights[i].number;
+						arr_loc.al = flights[i].arrival_id;
+					}
+				}
 	       }
 	   });
 };
 
+var get_airport = function(dest,arr,dept_airport,arr_airport){
+	return $.ajax(root_url + "airports",
+	   {
+	       type: 'GET',
+	       xhrFields: {withCredentials: true},
+	       success: (airports) => {
+				for (let i=0; i<airports.length; i++) {
+					if(airports[i].id === dest.dv){
+						dept_airport.da = airports[i].name;
+					}
+					if(airports[i].id === arr.dv){
+						arr_airport.aa = airports[i].name;
+					}
+				}
+		   }
+	   });
+} 
+
+var get_date = function(date,flight_id){
+	return $.ajax(root_url + "instances",
+	   {
+	       type: 'GET',
+	       xhrFields: {withCredentials: true},
+	       success: (instances) => {
+				for (let i=0; i<instances.length; i++) {
+					if(instances[i].flight_id === flight_id.fi){
+						date.d = instances[i].date;
+					}
+				}
+		   }
+	   });
+}
+
+
 //randomly generate a cost for a flight
 var get_cost = function(cost){
-	cost.cv = Math.floor(Math.random() * (700 - 200) + 200);
+	cost.cv = Math.random() * (700 - 200) + 200;
 	return Promise.resolve(cost);
 }
 
