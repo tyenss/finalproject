@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import AcceptPage from "./acceptPage";
 import MapContainer from "./googleMap";
-import {login} from "../javascript files/finalProject";
+import {login} from "../javascript files/final_project";
 /*
 creates react login component
  */
@@ -23,10 +23,6 @@ class Welcome extends React.Component
 
     handleSubmit()
     {
-        //some function (this.state.value,this.state.password);
-        // alert('A name was submitted: ' + this.state.value);
-        // event.preventDefault();
-        alert(document.getElementById("userText").value+document.getElementById("passText").value);
         login(document.getElementById("userText").value,document.getElementById("passText").value);
     }
     handleChangeUser(event) {
@@ -42,9 +38,6 @@ class Welcome extends React.Component
         let className = 'menu';
         let buttonName="submitButton";
         let inputTextClass="input";
-        // if (this.state.isActive) {
-        //     className += ' menu-active';
-        // }
         return (
 
             <div>
@@ -60,7 +53,6 @@ class Welcome extends React.Component
                                className={inputTextClass}
                                id={"userText"}
                                 placeholder="username"/>
-                        {/*Password:*/}
                         <input type="password" name="password" value={this.state.password}
                                onChange={this.handleChangePass}
                                className={inputTextClass}
@@ -69,7 +61,6 @@ class Welcome extends React.Component
                     </label>
                     <input type="button" value="Submit" className={buttonName} onClick={this.handleSubmit.bind(this)}/>
                 </form>
-                {/*ReactDOM.render(<MapContainer lat={5} lng={5} destinationLat={6} destinationLng={6}/>);*/}
             </div>
     )}
 }

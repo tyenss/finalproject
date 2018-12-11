@@ -90,18 +90,27 @@ var get_flight = function(airline_id, dest){
 	       type: 'GET',
 	       xhrFields: {withCredentials: true},
 	       success: (flights) => {
-				for (let i=0; i<flights.length; i++) {
-					if(flights[i].airline_id === airline_id.id){
-						dest.dv = flights[i].departure_id;
-					}
-				}
+
+	           for (let i=0; i<flights.length; i++) {
+                   if(flights[i].airline_id === airline_id.id){
+                       dest.dv = flights[i].departure_id;
+                   }
+               }
+               $.ajax(root_url + "flights/",
+                   {
+                       type: 'GET',
+                       xhrFields: {withCredentials: true},
+                       success: (response) => {
+
+                       }
+                   });
 	       }
 	   });
 };
 
 //randomly generate a cost for a flight
 var get_cost = function(cost){
-	cost.cv = Math.random() * (700 - 200) + 200;
+	cost.cv = Math.floor(Math.random() * (700 - 200) + 200);
 	return Promise.resolve(cost);
 }
 
