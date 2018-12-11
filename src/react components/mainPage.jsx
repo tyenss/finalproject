@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import AcceptPage from "./acceptPage.jsx";
 import SimpleMap from "./googleMap.jsx";
 import {getRandomPicture} from "../javascript files/auxillaryFunctions";
-import {create_new_flight_info} from "../javascript files/finalProject";
+import {create_new_flight_info,create_accept_page} from "../javascript files/final_project";
 
 /*
 creates react components to display a tinder match and allows you to accept or decline them
@@ -33,8 +33,7 @@ class MainPage extends React.Component
     {
         if (accept===true)
         {
-            //ReactDOM.render(<AcceptPage/>,document.getElementById("root"));
-            //function in API will call acceptPage.jsx
+            create_accept_page();
         } else
         {
             create_new_flight_info();
@@ -42,8 +41,6 @@ class MainPage extends React.Component
     }
 
     render() {
-        // let picture=getRandomPicture();
-        // alert(picture);
         return (
             <div id={"entirePage"}>
                 <div id={"title"}>
@@ -51,7 +48,7 @@ class MainPage extends React.Component
                     <h6>Love at its Highest</h6>
                 </div>
                  <div className="mainTinderPage">
-                     <button ref={"reject"} onClick={this.handleClick.bind(this,true)} className={"button"}>Bad Plane</button>
+                     <button ref={"reject"} onClick={this.handleClick.bind(this,false)} className={"button"}>Bad Plane</button>
                      <div className={"attributes"}>
                          <img src={require("../pictures/plane.jpg")} alt={"Plane's face"} id={"img"}/>
                          <p ref={"airline"} id={"airline"}>Airline: {this.props.airline}</p>
@@ -61,7 +58,7 @@ class MainPage extends React.Component
                          <p ref={"logo"} id={"logo"}>Logo: {this.props.logo}</p>
                      </div>
                      {/*<div id="map"></div>*/}
-                     <button ref={"accept"} onClick={this.handleClick.bind(this,false)} className={"button"}>Good Plane</button>
+                     <button ref={"accept"} onClick={this.handleClick.bind(this,true)} className={"button"}>Good Plane</button>
 
                  </div>
                 <SimpleMap latitude={this.props.lat} longitude={this.props.lng}

@@ -62,7 +62,7 @@ function create_new_flight_info(){
 	  })	
 }
 
-function create_accept_page(){
+export function create_accept_page(){
 	var airline_id={id:""};
 	var airline_1 = {al:""};
 	var logo={lg:""};
