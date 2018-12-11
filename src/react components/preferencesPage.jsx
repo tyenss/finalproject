@@ -6,7 +6,7 @@ import {create_new_flight_info, login} from "../javascript files/final_project";
 /*
 creates react components to display a tinder match and allows you to accept or decline them
  */
-class MainPage extends React.Component
+class PreferencesPage extends React.Component
 {
     constructor()
     {
@@ -88,4 +88,4 @@ class MainPage extends React.Component
     }
 }
 
-export default MainPage;
+export default PreferencesPage;

@@ -22,6 +22,9 @@ class AcceptPage extends React.Component
                     <p>Thank you for using Linder Tinder</p>
                     <p>Here is your plane's info:</p>
                     <div id={"attributes"}>
+                        <p>Ticket owner: {this.props.personName}</p>
+                        <p>Ticket owner: {this.props.age}</p>
+                        <p>Ticket owner: {this.props.gender}</p>
                         <p>Plane Name: {this.props.name}</p>
                         <p>Departing Time: {this.props.departingTime}</p>
                         <p>Arrival Time: {this.props.arrivalTime}</p>
