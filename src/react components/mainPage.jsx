@@ -54,8 +54,8 @@ class MainPage extends React.Component
                          <p ref={"airline"} id={"airline"}>Airline: {this.props.airline}</p>
                          <p ref={"airplane"} id={"airplane"}>Airplane: {this.props.airplane}</p>
                          <p ref={"destination"} id={"destination"}>Destination: {this.props.destination}</p>
-                         <p ref={"cost"} id={"cost"}>Cost: {this.props.cost}</p>
-                         <p ref={"logo"} id={"logo"}>Logo: {this.props.logo}</p>
+                         <p ref={"cost"} id={"cost"}>Cost: ${this.props.cost}</p>
+                         <p ref={"logo"} id={"logo"}>Motto: {this.props.logo}</p>
                      </div>
                      {/*<div id="map"></div>*/}
                      <button ref={"accept"} onClick={this.handleClick.bind(this,true)} className={"button"}>Good Plane</button>
